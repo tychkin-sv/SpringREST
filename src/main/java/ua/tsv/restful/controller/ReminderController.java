@@ -1,10 +1,7 @@
 package ua.tsv.restful.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ua.tsv.restful.entity.Remind;
 import ua.tsv.restful.repository.RemindRepository;
 
@@ -12,19 +9,33 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/reminder")
 public class ReminderController {
 
 
     @Autowired
     RemindRepository remindRepository;
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/reminders/", method = RequestMethod.GET)
     @ResponseBody
-    public Remind getRemind(){
-        List<Remind> list = remindRepository.findAll();
-        return createMockRemind();
+    public List<Remind> getAllReminders(){
+
+        return remindRepository.findAll();
     }
+
+    @RequestMapping(value = "/reminders/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Remind getReminderById(@PathVariable("id") long id){
+
+        return remindRepository.findOne(id);
+    }
+
+    @RequestMapping(value = "/reminders/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public Remind setReminderById(@RequestBody Remind remind){
+        return remindRepository.saveAndFlush(remind);
+
+    }
+
 
     private Remind createMockRemind() {
         Remind remind = new Remind();
