@@ -3,10 +3,7 @@ package ua.tsv.restful.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -17,9 +14,38 @@ public class Remind {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private long id;
+
+    @Column(name = "title", nullable = false, length = 50)
     private String title;
+
+    @Column(name = "remindDate", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date remindDate;
 
+    public Remind() {
+    }
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Date getRemindDate() {
+        return remindDate;
+    }
+
+    public void setRemindDate(Date remindDate) {
+        this.remindDate = remindDate;
+    }
 }
