@@ -5,7 +5,6 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 import ua.tsv.restful.config.WebConfig;
-import ua.tsv.restful.repository.RemindRepository;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

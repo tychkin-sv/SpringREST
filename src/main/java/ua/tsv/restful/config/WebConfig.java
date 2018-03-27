@@ -20,6 +20,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        // Конвертер entity в json
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
         converter.setObjectMapper(new ObjectMapper());
         converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
