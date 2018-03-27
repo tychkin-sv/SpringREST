@@ -26,4 +26,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
         converters.add(converter);
     }
+
+
 }
